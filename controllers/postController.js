@@ -5,7 +5,7 @@ const asyncHandler =require('../utils/asycHandler');
 exports.getAllPosts= asyncHandler(async(req,res,next)=>{
     // populate('author', 'username email')  for this only username and password will fetch,
     // not the password fetch
-    const posts = (await Post.find().populate('author','username email')).toSorted({createdAt:-1});
+    const posts = await Post.find().populate('author','username email').sort({createdAt:-1});
     res.status(200).json({
         success:true,
         count:Post.length,
