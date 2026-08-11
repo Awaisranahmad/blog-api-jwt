@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const postRoutes = require('./routes/postRoutes');
 const authRoutes = require('./routes/authRoutes');
 
 const app = express();
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use('/api/posts',postRoutes);
 app.listen(PORT, () => {
   console.log(`blog server runnging http://localhost:${PORT}`);
 });
