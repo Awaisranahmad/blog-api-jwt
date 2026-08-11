@@ -1,11 +1,5 @@
 
----
 
-### 📄 Complete README.md (Copy karein aur paste karein)
-
-`blog-backend` folder mein `README.md` file banayein (agar pehle se hai toh replace kar dein), aur yeh code paste karein:
-
-```markdown
 # Blog Platform API with JWT Authentication
 
 A secure RESTful API for a blogging platform built with **Node.js**, **Express**, **MongoDB**, and **JWT Authentication**. 
@@ -348,22 +342,24 @@ The API uses a **Centralized Error Handling Middleware** to catch all errors in 
 ## 📸 Postman Testing Screenshots
 
 ### 1. User Registration (201 Created)
-![Register User](https://github.com/user-attachments/assets/6a77666e73d45d81b913b609)
+<img width="1911" height="993" alt="Screenshot 2026-08-08 222521" src="https://github.com/user-attachments/assets/dafb5f30-7a60-4832-b575-777287973d25" />
+
 
 ### 2. User Login & JWT Token (200 OK)
-![Login User](https://github.com/user-attachments/assets/6a776811b04d6d7e92692772)
+<img width="1911" height="991" alt="Screenshot 2026-08-08 223005" src="https://github.com/user-attachments/assets/46de5611-5757-4384-944f-9d1015e564a0" />
+
 
 ### 3. Create Post (201 Created - Authenticated)
-![Create Post](https://github.com/user-attachments/assets/6a7acd7a6bcfb971782c02d8)
+<img width="938" height="1013" alt="Screenshot 2026-08-11 122142" src="https://github.com/user-attachments/assets/425c13a1-bef8-40be-99ec-d8b8c16faeaf" />
 
-### 4. Get All Posts (200 OK - Public)
-![Get All Posts](https://github.com/user-attachments/assets/6a7acd7a6bcfb971782c02d8)
 
-### 5. Delete Post (200 OK - Owner)
-![Delete Post](https://github.com/user-attachments/assets/6a7acd7a6bcfb971782c02d8)
+### 4. Delete Post (200 OK - Owner)
+<img width="945" height="1007" alt="Screenshot 2026-08-11 122633" src="https://github.com/user-attachments/assets/219275aa-1f67-471d-8c12-bdc4e753a93d" />
 
-### 6. Forbidden (403) - Unauthorized Update Attempt
-![Forbidden 403](https://github.com/user-attachments/assets/6a7acfac6bcfb971782c02d8)
+
+### 5. Forbidden (403) - Unauthorized Update Attempt
+<img width="947" height="1015" alt="Screenshot 2026-08-11 123529" src="https://github.com/user-attachments/assets/7f468cb1-3596-4426-8e18-5800d054fedb" />
+
 
 ---
 
@@ -389,6 +385,4 @@ The `Blog-API.postman_collection.json` file is included in the repository for ea
 - ✅ **Error Handling:** 401, 403, 404, 400 handled properly.
 - ✅ **Documentation:** Complete README and Postman collection provided.
 ```
-
----
 
