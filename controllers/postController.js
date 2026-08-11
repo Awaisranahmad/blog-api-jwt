@@ -8,7 +8,7 @@ exports.getAllPosts= asyncHandler(async(req,res,next)=>{
     const posts = await Post.find().populate('author','username email').sort({createdAt:-1});
     res.status(200).json({
         success:true,
-        count:Post.length,
+        count:posts.length,
         data:posts
     });
 
