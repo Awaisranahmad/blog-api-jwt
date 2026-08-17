@@ -16,7 +16,7 @@ Registered users can create, update, and delete their own posts, while anyone ca
 - ✅ **Public Routes**: Anyone can read posts (`GET /api/posts`, `GET /api/posts/:id`).
 - ✅ **Protected Routes**: Only authenticated users can create, update, or delete posts.
 - ✅ **Authorization**: Users can only edit/delete their **own** posts (403 Forbidden otherwise).
-- ✅ **Centralized Error Handling**: Professional error responses for validation, auth, and server errors.
+- ✅ **Centralized Error Handling**: Professional error responses for validation, auth, and server errors..
 - ✅ **Environment Variables**: Secure management of sensitive data using `.env`.
 
 ---
