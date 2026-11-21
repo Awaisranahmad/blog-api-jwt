@@ -53,9 +53,13 @@ blog-backend/
 ├── middleware/
 │   └── authMiddleware.js    # JWT verification middleware
 ├── utils/
-│   └── asyncHandler.js      # Wrapper to catch async errors
+│   └── asycHandler.js      # Wrapper to catch async errors
+├── tests/
+│   ├── auth.test.js        # Login/register tests (no database needed)
+│   └── models.test.js      # Mongoose validation tests
 ├── server.js                # Main application entry point
 ├── .env                     # Environment variables (ignored by Git)
+├── .env.example             # Template for required variables
 ├── .gitignore               # Files ignored by Git
 ├── package.json             # Dependencies and scripts
 └── README.md                # Project documentation
@@ -84,13 +88,16 @@ blog-backend/
    ```
 
 3. **Set up environment variables**
-   Create a `.env` file in the root directory with the following:
+   Copy the example file and fill in your own values:
+   ```bash
+   cp .env.example .env
+   ```
    ```env
    PORT=5000
    MONGO_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/blogDB?retryWrites=true&w=majority
-   JWT_SECRET=mySuperSecretKeyForBlogApp2026
+   JWT_SECRET=change-this-to-a-long-random-secret
    ```
-   > **Replace** `<username>`, `<password>`, and `cluster0.xxxxx` with your actual MongoDB Atlas credentials.
+   > **Replace** `<username>`, `<password>`, and `cluster0.xxxxx` with your actual MongoDB Atlas credentials. Never commit the real `.env` — it is git-ignored.
 
 4. **Start the development server**
    ```bash
@@ -327,6 +334,24 @@ Authorization: Bearer <owner_token>
 
 ---
 
+## 🧪 Tests
+
+Run the test suite (no database or API key needed — the User model and bcrypt are stubbed, the real JWT is signed with a throwaway test secret):
+
+```bash
+npm test
+```
+
+15 tests cover: login with a wrong password must fail (regression test for the auth bypass fixed on 2026-11-21), login/register validation, and Mongoose model validation (including the Post `timestamps` option).
+
+---
+
+## 📝 Changelog
+
+- **2026-11-21 — Auth + data fixes:** fixed a login bypass — `bcrypt.compare` ran but its result was never checked (`if (!password)` instead of `if (!isPasswordCorrect)`), so any password worked for an existing email. Fixed the `require('../models/User')` case mismatch (file is `user.js`), which crashed the app on Linux. Fixed the Post schema typo `timestamp: true` → `timestamps: true`, so `createdAt`/`updatedAt` are now set and sorting by `createdAt` works. Fixed `package.json` `main` (`index.js` → `server.js`), added `.env.example` and a `node:test` suite (`tests/`, 15 tests, `npm test`), and corrected the README (utils filename, Postman collection file does not exist).
+
+---
+
 ## 🧪 Error Handling Strategy
 
 The API uses a **Centralized Error Handling Middleware** to catch all errors in one place.
@@ -365,7 +390,7 @@ The API uses a **Centralized Error Handling Middleware** to catch all errors in 
 
 ## 📦 Postman Collection
 
-The `Blog-API.postman_collection.json` file is included in the repository for easy importing into Postman.
+No Postman collection file is in the repo yet — the screenshots above show the tested requests. (An earlier README version claimed a `Blog-API.postman_collection.json` file; it was never committed.)
 
 ---
 
